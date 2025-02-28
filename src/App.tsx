@@ -10,9 +10,7 @@ function App() {
       mx-auto grid grid-cols-2 
       lg:grid-cols-[1fr_350px] 
       h-screen
-       bg-gray-300
-       font-black
-       font-sans
+       bg-gray-50
        overflow-y-auto"
       >
         <Pokemon />

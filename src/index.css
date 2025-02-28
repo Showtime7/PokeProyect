@@ -1,1 +1,9 @@
 @import "tailwindcss";
+
+.pixelated {
+  image-rendering: pixelated;
+}
+
+.text-outline {
+  -webkit-text-stroke: 0.7px black; /* Contorno negro */
+}

@@ -9,7 +9,7 @@ export default function Pokemon() {
   const fetchPokemon = async () => {
     try {
       const response = await axios.get(
-        "https://pokeapi.co/api/v2/pokemon?limit=50"
+        "https://pokeapi.co/api/v2/pokemon?limit=150"
       );
       setPokemons(response.data.results);
       //console.log(response.data.results);

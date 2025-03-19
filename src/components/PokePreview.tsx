@@ -5,10 +5,17 @@ import colorType from "../data/ColorType";
 
 interface PokePreviewProps {
   pokemonURL: string;
+  setIsSideOpen: (isOpen: boolean) => void;
+  setSelectedPokemon: (pokemon: any) => void;
 }
 
-export default function PokePreview({ pokemonURL }: PokePreviewProps) {
+export default function PokePreview({
+  pokemonURL,
+  setIsSideOpen,
+  setSelectedPokemon,
+}: PokePreviewProps) {
   const [pokemon, setPokemon] = useState<any>(null);
+
   const fetchPokemon = async () => {
     try {
       const response = await axios.get(pokemonURL);
@@ -22,11 +29,16 @@ export default function PokePreview({ pokemonURL }: PokePreviewProps) {
   useEffect(() => {
     fetchPokemon();
   }, []);
+
   return (
     <article
       className="bg-white rounded-full h-55 w-55 flex flex-col items-center justify-center shadow-lg font-extrabold capitalize bg-am
-    transform transition-transform duration-200 ease-in-out hover:scale-110 motion-reduce:transform-none cursor-pointer 
-    group gap-0.5"
+      transform transition-transform duration-200 ease-in-out hover:scale-110 motion-reduce:transform-none cursor-pointer 
+      group gap-0.5"
+      onClick={() => {
+        setIsSideOpen(true); // Abre el módulo
+        setSelectedPokemon(pokemon); // Pasa los datos del Pokémon
+      }}
     >
       <header className="flex justify-center">
         <img

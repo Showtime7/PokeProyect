@@ -1,8 +1,12 @@
+import { useState } from "react";
 import Pokemon from "./components/Pokemon";
 import Side from "./components/Side";
 import "./index.css";
 
 function App() {
+  const [isSideOpen, setIsSideOpen] = useState(false);
+  const [selectedPokemon, setSelectedPokemon] = useState<any>(null);
+
   return (
     <section>
       <main
@@ -13,8 +17,15 @@ function App() {
        bg-gray-50
        overflow-y-auto"
       >
-        <Pokemon />
-        <Side />
+        <Pokemon
+          setIsSideOpen={setIsSideOpen}
+          setSelectedPokemon={setSelectedPokemon}
+        />
+        <Side
+          isSideOpen={isSideOpen}
+          setIsSideOpen={setIsSideOpen}
+          selectedPokemon={selectedPokemon}
+        />
       </main>
     </section>
   );

@@ -4,8 +4,16 @@ import { useEffect, useState, FormEvent } from "react";
 import PokemonList from "./PokemonList";
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 
+interface PokemonProps {
+  setIsSideOpen: (isOpen: boolean) => void;
+  setSelectedPokemon: (pokemon: any) => void;
+}
+
 const valorInicial = 50;
-export default function Pokemon() {
+export default function Pokemon({
+  setIsSideOpen,
+  setSelectedPokemon,
+}: PokemonProps) {
   const [pokemons, setPokemons] = useState<{ name: string; url: string }[]>([]);
   const [searchPokemon, setSearchPokemon] = useState("");
   const [limit, setLimit] = useState(valorInicial);
@@ -65,7 +73,11 @@ export default function Pokemon() {
           </button>
         </div>
       </form>
-      <PokemonList Pokemon={pokeName.slice(0, limit)} />
+      <PokemonList
+        Pokemon={pokeName.slice(0, limit)}
+        setIsSideOpen={setIsSideOpen}
+        setSelectedPokemon={setSelectedPokemon}
+      />
       <div ref={setRef} className="flex justify-center p-4"></div>
     </section>
   );
